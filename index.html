@@ -1,118 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Dynamic Portfolio Example" />
+  <title>Dynamic Portfolio</title>
 
-    <title>Dynamic Portfolio</title>
-    <!-- Google Fontsのリンクを追加 -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ex.css"/>
+  <!-- Example of referencing reset.css, style.css, plugin.css from your environment -->
+  <!-- These files or paths do not actually exist unless you create them -->
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="plugin.css" />
+  <!-- / Example references -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- You can change the families below to match your desired fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Meow+Script&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Example: Animated CSS (if you want to replicate fade-ins, etc.) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+  >
+
+  <!-- Your own stylesheet (overrides, etc.) -->
+  <link rel="stylesheet" href="ex.css" />
+
+  <!-- Example: If you use jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- If you have your own scripts -->
+  <script src="script.js"></script>
+
 </head>
+<body id="index_page">
 
-<body>
+  <!-- ========== Header & Overlay Menu ========== -->
+  <header>
+    <div id="menu_area" class="overlay-menu">
+      <img
+        id="menu_close_icon"
+        alt="Menu close icon"
+        src="close-icon.svg"
+        onclick="menuClose()"
+      >
+      <div class="menu-container">
+        <ul class="font-en">
+          <li class="logo">
+            <a href="#hero">
+              <!-- Replace with your own logo if you wish -->
+              <img
+                id="menu_logo"
+                alt="Site Logo"
+                src="logo-b.svg"
+              >
+            </a>
+          </li>
 
-    <!-- 固定ナビゲーションバー -->
-    <header>
-        <nav class="main-nav">
-            <div class="logo">
-                <!-- ロゴや名前 -->
-                <a href="#hero">Sora Nagamatsu</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#study">Study</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" onclick="menuClose()">About</a></li>
+          <li><a href="#study" onclick="menuClose()">Study</a></li>
+          <li><a href="#portfolio" onclick="menuClose()">Portfolio</a></li>
+          <li><a href="#contact" onclick="menuClose()">Contact</a></li>
+
+          <!-- Example “Online shop” link if you want it -->
+          <!--
+          <li class="onlineshop">
+            <a
+              href="https://example.com"
+              class="button button-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="cart-icon.svg" alt="">
+              ONLINE SHOP
+            </a>
+          </li>
+          -->
+          <!-- Example SNS icons if desired -->
+          <!--
+          <li>
+            <ul class="sns_logo">
+              <li>
+                <a href="https://www.instagram.com/..." target="_blank">
+                  <img
+                    src="instagram-icon.svg"
+                    alt="instagram-icon"
+                    class="sns_logo-item"
+                  >
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/..." target="_blank">
+                  <img
+                    src="facebook-icon.svg"
+                    alt="facebook-icon"
+                    class="sns_logo-item"
+                  >
+                </a>
+              </li>
             </ul>
-        </nav>
-    </header>
+          </li>
+          -->
+        </ul>
+      </div>
+    </div>
 
-    <!-- ヒーローセクション -->
+    <div
+      class="menu_open_icon pc_only"
+      onclick="menuOpen()"
+    >
+      <img src="menu-icon.svg" alt="menu open">
+    </div>
+    <div
+      id="menu_open_icon_sp"
+      class="menu_open_icon sp_only hide-menu-open-icon"
+      onclick="menuOpen()"
+    >
+      <img src="menu-icon.svg" alt="menu open">
+    </div>
+    <div
+      id="menu_overlay"
+      style="display: none;"
+      onclick="menuClose()"
+    ></div>
+  </header>
+  <!-- /Header & Overlay Menu -->
+
+  <main id="main_contents" class="site-main">
+    <!-- ========== Hero Section ========== -->
     <section id="hero" class="hero-section">
+      <!-- Add parallax or background slider if you want, or a static image -->
+      <div class="hero-image" style="background-image: url('hero-bg.jpg');">
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in">
-            <h1>Hi, I'm Sora!</h1>
-            <p>This is my website!</p>
-            <a href="#portfolio" class="cta-button">View My Work</a>
+          <h1>Hi, I'm Sora!</h1>
+          <p>This is my website!</p>
+          <a href="#portfolio" class="cta-button">View My Work</a>
         </div>
+      </div>
     </section>
+    <!-- /Hero Section -->
 
-    <!-- About セクション -->
+    <!-- ========== About Section ========== -->
     <section id="about" class="fade-in section-container">
-        <h2>About Me</h2>
-        <p>あなた自身やバックグラウンド、フィロソフィーを簡潔に紹介するテキストをここに配置します。</p>
+      <h2>About Me</h2>
+      <p>
+        あなた自身やバックグラウンド、フィロソフィーを簡潔に紹介するテキストをここに配置します。
+        <br>
+        ここでは、パティスリーの例を参考にしつつも、
+        自分用の説明を自由に追記すると良いでしょう。
+      </p>
     </section>
+    <!-- /About Section -->
 
-    <!-- Study セクション -->
+    <!-- ========== Study Section ========== -->
     <section id="study" class="fade-in section-container">
-        <h2>Study</h2>
-        <p>あなたの学習内容や現在取り組んでいるプロジェクト、興味のある分野について紹介します。</p>
-        <div class="study-list">
-            <div class="study-item">
-                <h3>Course One</h3>
-                <p>コースの詳細や学んだことを簡潔に説明。</p>
-                <button class="openModal">Learn More</button>
-            </div>
-            <div class="study-item">
-                <h3>Project Two</h3>
-                <p>プロジェクトの詳細や成果を簡潔に説明。</p>
-                <button class="openModal">Learn More</button>
-            </div>
-            <div class="study-item">
-                <h3>Research Three</h3>
-                <p>研究の詳細や目的を簡潔に説明。</p>
-                <button class="openModal">Learn More</button>
-            </div>
+      <h2>Study</h2>
+      <p>学習中のプロジェクトや興味ある分野などを紹介します。</p>
+      <div class="study-list">
+        <div class="study-item">
+          <h3>Course One</h3>
+          <p>コースの詳細や学んだことを簡潔に説明。</p>
+          <button class="openModal">Learn More</button>
         </div>
+        <div class="study-item">
+          <h3>Project Two</h3>
+          <p>プロジェクトの詳細や成果を簡潔に説明。</p>
+          <button class="openModal">Learn More</button>
+        </div>
+        <div class="study-item">
+          <h3>Research Three</h3>
+          <p>研究の詳細や目的を簡潔に説明。</p>
+          <button class="openModal">Learn More</button>
+        </div>
+      </div>
     </section>
+    <!-- /Study Section -->
 
-    <!-- ポートフォリオ セクション -->
+    <!-- ========== Portfolio Section ========== -->
     <section id="portfolio" class="fade-in section-container">
-        <h2>Portfolio</h2>
-        <div class="portfolio-list">
-            <div class="portfolio-item">
-                <img src="path-to-image1.jpg" alt="Project 1">
-                <h3>Project Title 1</h3>
-                <p>プロジェクトの簡単な説明。</p>
-            </div>
-            <div class="portfolio-item">
-                <img src="path-to-image2.jpg" alt="Project 2">
-                <h3>Project Title 2</h3>
-                <p>プロジェクトの簡単な説明。</p>
-            </div>
-            <!-- 必要に応じて追加 -->
+      <h2>Portfolio</h2>
+      <div class="portfolio-list">
+        <div class="portfolio-item">
+          <img src="path-to-image1.jpg" alt="Project 1">
+          <h3>Project Title 1</h3>
+          <p>プロジェクトの簡単な説明。</p>
         </div>
+        <div class="portfolio-item">
+          <img src="path-to-image2.jpg" alt="Project 2">
+          <h3>Project Title 2</h3>
+          <p>プロジェクトの簡単な説明。</p>
+        </div>
+        <!-- もっと作品があれば追加 -->
+      </div>
     </section>
+    <!-- /Portfolio Section -->
 
-    <!-- Contact セクション -->
+    <!-- ========== Contact Section ========== -->
     <section id="contact" class="fade-in section-container">
-        <h2>Contact Me</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
+      <h2>Contact Me</h2>
+      <!-- Example form styling, adapt as needed -->
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
     </section>
+    <!-- /Contact Section -->
 
-    <!-- フッター -->
+    <!-- ========== Footer ========== -->
     <footer class="fade-in">
-        <p>&copy; 2024 Sora Nagamatsu</p>
+      <p>&copy; 2024 Sora Nagamatsu</p>
     </footer>
+    <!-- /Footer -->
 
-    <!-- モーダルウィンドウ -->
+    <!-- ========== Modal Window ========== -->
     <div id="modal" class="modal hidden">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h3>More About This Study</h3>
-            <p>ここに学習内容の詳細情報を追加します。閲覧者が追加的な説明を得られる場所です。</p>
-        </div>
-    </div> 
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h3>More About This Study</h3>
+        <p>ここに学習内容の詳細情報を追加します。閲覧者が追加的な説明を得られる場所です。</p>
+      </div>
+    </div>
+    <!-- /Modal Window -->
 
-    <!-- スクロールトップボタン -->
+    <!-- ========== Scroll to Top Button ========== -->
     <button id="scrollToTop" class="scroll-to-top hidden">&uarr;</button>
 
-    <script src="script.js"></script>
+  </main>
+
+  <!-- Example script that might handle menu, overlay, etc. -->
+  <script>
+    function menuOpen() {
+      document.getElementById('menu_area').style.display = 'block';
+      document.getElementById('menu_overlay').style.display = 'block';
+    }
+    function menuClose() {
+      document.getElementById('menu_area').style.display = 'none';
+      document.getElementById('menu_overlay').style.display = 'none';
+    }
+
+    // Example smoothScroll if needed
+    $('[data-scroll-to]').on('click', function(e) {
+      e.preventDefault();
+      const target = $(this).data('scroll-to');
+      $('html, body').animate({
+        scrollTop: $(`#${target}`).offset().top - 50
+      }, 600);
+    });
+
+    // Example fadeIn for hero, etc. if you want
+    $(document).ready(function() {
+      $('.fade-in').addClass('animated fadeIn');
+      // More advanced animations can be added
+    });
+  </script>
+
 </body>
 </html>
